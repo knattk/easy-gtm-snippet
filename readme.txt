@@ -1,9 +1,9 @@
-=== Easy GTM ===
-Contributors: knattk
+=== Easy GTM Snippet ===
+Contributors: KDEV
 Tags: google tag manager, gtm, analytics, tracking
 Requires at least: 4.0
-Tested up to: 6.7
-Stable tag: 1.0.0
+Tested up to: 6.9
+Stable tag: 1.0.1
 Requires PHP: 5.6
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -18,9 +18,9 @@ Originally created by manishah.
 
 == Installation ==
 
-1. Upload the plugin files to the `/wp-content/plugins/easy-gtm-wp` directory, or install the plugin through the WordPress plugins screen directly.
+1. Upload the plugin files to the `/wp-content/plugins/easy-gtm-snippet` directory, or install the plugin through the WordPress plugins screen directly.
 2. Activate the plugin through the 'Plugins' screen in WordPress.
-3. Use the Settings->Easy GTM screen to configure the plugin.
+3. Use the Settings->Easy GTM Snippet screen to configure the plugin.
 
 == Frequently Asked Questions ==
 

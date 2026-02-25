@@ -3,16 +3,16 @@
 namespace EasyGTM;
 
 /**
- * Plugin Name:       Easy GTM
+ * Plugin Name:       Easy GTM Snippet
  * Description:       A simple plugin to add Google Tag Manager to your WordPress site. (Originally created by manishah)
- * Version:           1.0.0
+ * Version:           1.0.1
  * Requires at least: 4.0
  * Requires PHP:      5.6
- * Author:            Nattakan C
+ * Author:            KDEV
  * Author URI:        https://github.com/knattk
  * License:           GPL v2 or later
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
- * Text Domain:       easy-gtm-wp
+ * Text Domain:       easy-gtm-snippet
  */
 
 if (!defined('ABSPATH')) {
@@ -35,7 +35,7 @@ class EasyGTM
      */
     public function load_textdomain()
     {
-        load_plugin_textdomain('easy-gtm-wp');
+        load_plugin_textdomain('easy-gtm-snippet');
     }
 
     /**
@@ -60,7 +60,7 @@ class EasyGTM
      */
     public function add_settings_link($links)
     {
-        $settings_link = '<a href="options-general.php?page=easy-gtm-wp">' . __('Settings', 'easy-gtm-wp') . '</a>';
+        $settings_link = '<a href="options-general.php?page=easy-gtm-snippet">' . __('Settings', 'easy-gtm-snippet') . '</a>';
         array_unshift($links, $settings_link);
         return $links;
     }
@@ -92,7 +92,7 @@ class EasyGTM
                 j.src =
                     'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
                 f.parentNode.insertBefore(j, f);
-            })(window, document, 'script', 'dataLayer', '<?php echo $gtm_id; ?>');
+            })(window, document, 'script', 'dataLayer', '<?php echo esc_js($gtm_id); ?>');
         </script>
         <!-- End Google Tag Manager -->
     <?php
@@ -112,7 +112,7 @@ class EasyGTM
     ?>
         <!-- Google Tag Manager (noscript) -->
         <noscript>
-            <iframe src="https://www.googletagmanager.com/ns.html?id=<?php echo $gtm_id; ?>" height="0" width="0" style="display:none;visibility:hidden"></iframe>
+            <iframe src="https://www.googletagmanager.com/ns.html?id=<?php echo esc_attr($gtm_id); ?>" height="0" width="0" style="display:none;visibility:hidden"></iframe>
         </noscript>
         <!-- End Google Tag Manager (noscript) -->
 <?php
@@ -124,10 +124,10 @@ class EasyGTM
     public function create_plugin_settings_page()
     {
         add_options_page(
-            __('Google Tag Manager', 'easy-gtm-wp'),
-            __('Google Tag Manager', 'easy-gtm-wp'),
+            __('Google Tag Manager', 'easy-gtm-snippet'),
+            __('Google Tag Manager', 'easy-gtm-snippet'),
             'manage_options',
-            'easy-gtm-wp',
+            'easy-gtm-snippet',
             [$this, 'render_plugin_settings_page']
         );
     }
@@ -141,16 +141,16 @@ class EasyGTM
 
         add_settings_section(
             'easy-gtm_gtag_settings_section',
-            __('Easy WP Google Tag Manager', 'easy-gtm-wp'),
+            __('Easy GTM Snippet', 'easy-gtm-snippet'),
             [$this, 'gtag_settings_section_callback'],
-            'easy-gtm-wp'
+            'easy-gtm-snippet'
         );
 
         add_settings_field(
             'easy_gtm_gtag_id',
-            __('Google Tag Manager ID', 'easy-gtm-wp'),
+            __('Google Tag Manager ID', 'easy-gtm-snippet'),
             [$this, 'gtag_settings_callback'],
-            'easy-gtm-wp',
+            'easy-gtm-snippet',
             'easy-gtm_gtag_settings_section',
             array(
                 'label_for' => 'easy_gtm_gtag_id'
@@ -184,7 +184,7 @@ class EasyGTM
             <form method="post" action="options.php">
                 <?php
                 settings_fields('easy-gtm-group');
-                do_settings_sections('easy-gtm-wp');
+                do_settings_sections('easy-gtm-snippet');
                 submit_button();
                 ?>
             </form>
@@ -197,7 +197,7 @@ class EasyGTM
      */
     public function gtag_settings_section_callback()
     {
-        echo '<p>' . esc_html__('Enter your GTM Container ID (starts with GTM-).', 'easy-gtm-wp') . '</p>';
+        echo '<p>' . esc_html__('Enter your Google Tag Container ID GTM-XXXXXXX', 'easy-gtm-snippet') . '</p>';
     }
 
     /**
@@ -213,6 +213,7 @@ class EasyGTM
                id="<?php echo esc_attr($args['label_for']); ?>" 
                name="easy_gtm_gtag_id" 
                value="<?php echo esc_attr($option); ?>" 
+               placeholder="GTM-XXXXXXX"
                class="regular-text" />
         <?php
     }
