@@ -1,14 +1,14 @@
 === Easy GTM Snippet ===
-Contributors: KDEV
+Contributors: knattk, KDEV
 Tags: google tag manager, gtm, analytics, tracking
 Requires at least: 4.0
 Tested up to: 6.9
-Stable tag: 1.0.1
-Requires PHP: 5.6
+Stable tag: 1.1.0
+Requires PHP: 7.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-A simple plugin to add Google Tag Manager to your WordPress site.
+A simple plugin to add Google Tag Manager to your WordPress site. (Originally created by manishah)
 
 == Description ==
 
@@ -20,7 +20,23 @@ Originally created by manishah.
 
 1. Upload the plugin files to the `/wp-content/plugins/easy-gtm-snippet` directory, or install the plugin through the WordPress plugins screen directly.
 2. Activate the plugin through the 'Plugins' screen in WordPress.
-3. Use the Settings->Easy GTM Snippet screen to configure the plugin.
+3. Use the Settings->Google Tag Manager screen to configure the plugin.
+
+== External services ==
+
+This plugin connects to Google Tag Manager to load the container JavaScript used for tag management.
+
+It sends data to the following service:
+
+* Service name: Google Tag Manager
+* Service URL: https://www.googletagmanager.com
+* What the service is used for: Loading your configured GTM container script and fallback iframe on site pages
+* What data is sent and when: When a visitor loads a page where this plugin outputs GTM code, the visitor's browser requests resources from googletagmanager.com. This request may include data such as IP address, browser and device details (user agent), referrer URL, and the GTM container ID you configured.
+
+Google privacy policy: https://policies.google.com/privacy
+Google terms of service: https://policies.google.com/terms
+
+
 
 == Frequently Asked Questions ==
 
