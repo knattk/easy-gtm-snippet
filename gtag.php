@@ -5,7 +5,7 @@ namespace EGTMSP;
 /**
  * Plugin Name:       Easy GTM Snippet
  * Description:       A simple plugin to add Google Tag Manager to your WordPress site.
- * Version:           1.1.0
+ * Version:           1.1.1
  * Requires at least: 4.0
  * Requires PHP:      7.0
  * Author:            KDEV
@@ -25,7 +25,7 @@ if ( ! defined( 'EGTMSP_PLUGIN_FILE' ) ) {
 }
 
 if ( ! defined( 'EGTMSP_VERSION' ) ) {
-	define( 'EGTMSP_VERSION', '1.1.0' );
+	define( 'EGTMSP_VERSION', '1.1.1' );
 }
 
 if ( ! defined( 'EGTMSP_PLUGIN_DIR' ) ) {

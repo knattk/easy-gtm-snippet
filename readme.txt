@@ -3,12 +3,12 @@ Contributors: knattk, KDEV
 Tags: google tag manager, gtm, analytics, tracking
 Requires at least: 4.0
 Tested up to: 6.9
-Stable tag: 1.1.0
+Stable tag: 1.1.1
 Requires PHP: 7.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-A simple plugin to add Google Tag Manager to your WordPress site. (Originally created by manishah)
+A simple plugin to add Google Tag Manager to your WordPress site.
 
 == Description ==
 
@@ -36,13 +36,20 @@ It sends data to the following service:
 Google privacy policy: https://policies.google.com/privacy
 Google terms of service: https://policies.google.com/terms
 
-
+== Screenshots ==
+1. Plugin Dashboard
 
 == Frequently Asked Questions ==
 
 = How do I use this? =
 
 Go to Settings > Easy GTM and enter your Google Tag Manager ID (GTM-XXXX).
+
+
+== Acknowledgements ==
+
+* Credits: Inspired by Easy WP Google Tag Manager by manishah.
+
 
 == Changelog ==
 
