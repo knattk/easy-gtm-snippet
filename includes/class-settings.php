@@ -61,8 +61,24 @@ class EGTMSP_Settings {
 	 * @return string Sanitized GTM ID.
 	 */
 	public function egtmsp_sanitize_gtm_id( $input ) {
-		$sanitized = sanitize_text_field( $input );
-		return strtoupper( trim( $sanitized ) );
+		$sanitized = strtoupper( trim( sanitize_text_field( (string) $input ) ) );
+
+		if ( '' === $sanitized ) {
+			return '';
+		}
+
+		if ( preg_match( '/^GTM-[A-Z0-9]+$/', $sanitized ) ) {
+			return $sanitized;
+		}
+
+		add_settings_error(
+			EGTMSP_OPTION_GTM_ID,
+			'egtmsp_invalid_gtm_id',
+			esc_html__( 'Invalid Google Tag Manager ID. Use format GTM-XXXXXXX.', 'easy-gtm-snippet' ),
+			'error'
+		);
+
+		return (string) get_option( EGTMSP_OPTION_GTM_ID, '' );
 	}
 
 	/**

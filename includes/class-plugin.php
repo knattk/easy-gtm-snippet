@@ -18,7 +18,7 @@ class EGTMSP_Plugin {
 	/**
 	 * Settings handler.
 	 *
-	 * @var EGTMSP_Settings
+	 * @var EGTMSP_Settings|null
 	 */
 	private $settings;
 
@@ -27,7 +27,7 @@ class EGTMSP_Plugin {
 	 */
 	public function __construct() {
 		$this->frontend = new EGTMSP_Frontend();
-		$this->settings = new EGTMSP_Settings();
+		$this->settings = is_admin() ? new EGTMSP_Settings() : null;
 
 		add_action( 'plugins_loaded', [ $this, 'egtmsp_load_textdomain' ] );
 		add_action( 'init', [ $this, 'egtmsp_register_hooks' ] );
@@ -46,7 +46,10 @@ class EGTMSP_Plugin {
 	 */
 	public function egtmsp_register_hooks() {
 		$this->frontend->init();
-		$this->settings->init();
+
+		if ( $this->settings instanceof EGTMSP_Settings ) {
+			$this->settings->init();
+		}
 	}
 
 	/**
